@@ -1,1 +1,112 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import font definitions */
+@import 'assets/fonts/fonts.css';
+
+/* Markdown customization */
+.prose {
+  @apply text-gray-700 leading-relaxed;
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-primary font-bold mt-8 mb-4;
+    
+    &:first-child {
+      @apply mt-0;
+    }
+  }
+
+  h1 { @apply text-3xl; }
+  h2 { @apply text-2xl; }
+  h3 { @apply text-xl; }
+  h4 { @apply text-lg; }
+
+  p {
+    @apply mb-6;
+  }
+
+  a {
+    @apply text-accent hover:text-accent-dark underline decoration-2 underline-offset-2 transition-colors;
+  }
+
+  code {
+    @apply bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm text-primary-dark;
+  }
+
+  pre {
+    @apply bg-gray-100 p-4 rounded-lg mb-6 overflow-x-auto;
+    code {
+      @apply bg-transparent p-0 text-primary-dark;
+    }
+  }
+
+  blockquote {
+    @apply border-l-4 border-primary/20 pl-4 italic my-6 text-gray-600;
+  }
+
+  ul {
+    @apply list-disc list-outside ml-6 my-6 space-y-2;
+  }
+
+  ol {
+    @apply list-decimal list-outside ml-6 my-6 space-y-2;
+  }
+
+  img {
+    @apply rounded-lg my-6 shadow-md mx-auto;
+  }
+
+  hr {
+    @apply my-8 border-gray-200;
+  }
+
+  table {
+    @apply w-full my-6 border-collapse;
+    
+    th {
+      @apply bg-gray-50 text-left p-3 border font-semibold text-primary;
+    }
+    
+    td {
+      @apply p-3 border;
+    }
+    
+    tr:hover {
+      @apply bg-gray-50/50;
+    }
+  }
+
+  /* Custom content types */
+  .note {
+    @apply bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg my-6;
+    
+    &::before {
+      content: "Hinweis: ";
+      @apply font-semibold text-blue-700;
+    }
+  }
+
+  .warning {
+    @apply bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg my-6;
+    
+    &::before {
+      content: "Achtung: ";
+      @apply font-semibold text-yellow-700;
+    }
+  }
+
+  .tip {
+    @apply bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg my-6;
+    
+    &::before {
+      content: "Tipp: ";
+      @apply font-semibold text-green-700;
+    }
+  }
+}
+
+/* Apply Proxima Nova Condensed as default font */
+body {
+  font-family: 'Proxima Nova Condensed', system-ui, -apple-system, sans-serif;
+}

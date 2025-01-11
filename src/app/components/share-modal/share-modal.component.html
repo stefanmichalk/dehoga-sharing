@@ -1,0 +1,38 @@
+<!-- Modal Backdrop -->
+<div *ngIf="isOpen" 
+     class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center"
+     (click)="closeModal()">
+  
+  <!-- Modal Content -->
+  <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md mx-4 transform transition-all"
+       (click)="$event.stopPropagation()">
+    
+    <!-- Modal Header -->
+    <div class="p-6 border-b border-gray-100">
+      <h3 class="text-xl font-semibold text-gray-900">Teilen</h3>
+      <p class="mt-2 text-sm text-gray-600">Teile diesen Beitrag über deine bevorzugten Kanäle</p>
+    </div>
+    
+    <!-- Social Media Channels -->
+    <div class="p-6">
+      <div class="grid grid-cols-3 gap-3">
+        <button *ngFor="let channel of socialChannels"
+                (click)="share(channel)"
+                [class]="'flex items-center justify-center p-3 rounded-lg text-white transition-colors ' + channel.color + ' ' + channel.hoverColor">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="channel.icon"/>
+          </svg>
+          <span class="ml-2 text-sm">{{ channel.name }}</span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Close Button -->
+    <div class="p-6 border-t border-gray-100">
+      <button (click)="closeModal()"
+              class="w-full py-3 px-4 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+        Schließen
+      </button>
+    </div>
+  </div>
+</div>

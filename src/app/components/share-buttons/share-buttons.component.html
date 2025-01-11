@@ -1,0 +1,10 @@
+<div class="grid grid-cols-3 gap-2">
+  <button *ngFor="let channel of shareChannels"
+          (click)="share(channel)"
+          [class]="'flex items-center justify-center p-2 rounded-lg text-white transition-colors ' + channel.color + ' ' + channel.hoverColor">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="channel.icon"/>
+    </svg>
+    <span class="sr-only">{{ channel.name }}</span>
+  </button>
+</div>

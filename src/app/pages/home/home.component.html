@@ -1,0 +1,10 @@
+<!-- Main Content -->
+<div class="container mx-auto px-4 py-8">
+  <!-- Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+    <app-share-card
+      *ngFor="let card of mediaCards"
+      [card]="card">
+    </app-share-card>
+  </div>
+</div>

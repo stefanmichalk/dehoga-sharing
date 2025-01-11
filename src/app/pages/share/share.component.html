@@ -1,0 +1,119 @@
+<!-- Loading State -->
+<div *ngIf="!card" class="animate-pulse">
+  <div class="h-[50vh] bg-gray-200"></div>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="h-8 bg-gray-300 rounded w-3/4 mb-8"></div>
+    <div class="space-y-4">
+      <div class="h-4 bg-gray-200 rounded"></div>
+      <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Content when loaded -->
+<ng-container *ngIf="card">
+  <!-- Hero Banner with Gradient Overlay -->
+  <div class="relative h-[50vh] overflow-hidden">
+    <!-- Banner Image -->
+    <img *ngIf="card.banner" 
+         [src]="'https://dehoga-campaign.directus.app/assets/' + card.banner" 
+         class="banner-image w-full h-[60vh] object-cover object-top absolute"
+         [style.transform]="'translateY(' + parallaxOffset + 'px)'">
+    
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white"></div>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="max-w-7xl mx-auto px-4 relative -mt-48 z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 relative">
+      <!-- Main Content -->
+      <div class="lg:col-span-2">
+        <!-- Back Button -->
+        <a routerLink="/" class="inline-flex items-center text-accent hover:text-accent-dark mb-8 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Zurück zur Übersicht
+        </a>
+        <markdown [data]="card.blog" class="prose max-w-none mb-8"></markdown>
+
+        <!-- Mobile Box -->
+        <div class="block lg:hidden">
+          <div class="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg shadow-gray-200/50 p-8 border border-gray-100">
+            <ng-container *ngTemplateOutlet="boxContent"></ng-container>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Sidebar -->
+      <div class="fixed hidden lg:block" [ngStyle]="sidebarPosition" style="width: 400px;" *ngIf="isPositionCalculated">
+        <!-- Combined Box -->
+        <div class="sidebar-box bg-white/70 backdrop-blur-sm rounded-xl shadow-lg shadow-gray-200/50 p-8 border border-gray-100">
+          <ng-container *ngTemplateOutlet="boxContent"></ng-container>
+        </div>
+      </div>
+
+      <!-- Box Content Template -->
+      <ng-template #boxContent>
+        <!-- Share Section -->
+        <div class="mb-8">
+          <h2 class="text-xl font-semibold mb-6 text-accent flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+            </svg>
+            Teilen
+          </h2>
+          <app-share-buttons [cardId]="card.id" [title]="card.title"></app-share-buttons>
+        </div>
+
+        <!-- Resources Section -->
+        <div *ngIf="card.file || card.redirect">
+          <div class="h-px bg-gray-100 my-8"></div>
+          <h2 class="text-xl font-semibold mb-6 text-accent flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            Ressourcen
+          </h2>
+          <div class="space-y-3">
+            <a *ngIf="card.file" 
+               [href]="'https://dehoga-campaign.directus.app/assets/' + card.file"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="block px-4 py-2 bg-accent/10 hover:bg-accent/20 rounded-md text-accent transition-colors">
+              <div class="flex items-center text-sm">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Datei herunterladen
+              </div>
+            </a>
+            <a *ngIf="card.redirect" 
+               [href]="card.redirect"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="block px-4 py-2 bg-accent/10 hover:bg-accent/20 rounded-md text-accent transition-colors">
+              <div class="flex items-center text-sm">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                Weitere Informationen
+              </div>
+            </a>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</ng-container>
+
+<!-- Back Button -->
+<div class="hidden fixed top-4 left-4 z-50">
+  <a routerLink="/" class="inline-flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm shadow-lg text-gray-700 hover:text-accent transition-all group">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 transform transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+    Zurück zur Übersicht
+  </a>
+</div>

@@ -1,0 +1,18 @@
+/* Proxima Nova Condensed */
+@font-face {
+  font-family: 'Proxima Nova Condensed';
+  src: url('./ProximaNovaCond-Regular.woff2') format('woff2'),
+       url('./ProximaNovaCond-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova Condensed';
+  src: url('./ProximaNovaCond-Bold.woff2') format('woff2'),
+       url('./ProximaNovaCond-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
