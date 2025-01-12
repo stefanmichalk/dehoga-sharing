@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:4200' // Entwicklungsumgebung
+  baseUrl: 'https://damit-alle-gewinnen.de' // Entwicklungsumgebung
 };
