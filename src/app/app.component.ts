@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { filter } from 'rxjs';
@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private meta: Meta,
-    private title: Title
+    private title: Title,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit() {
@@ -27,6 +28,11 @@ export class AppComponent implements OnInit {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
+      // Scroll to top on every route change (only in browser)
+      if (isPlatformBrowser(this.platformId)) {
+        window.scrollTo(0, 0);
+      }
+      
       // Reset meta tags when navigating to home page
       if (event.url === '/') {
         this.title.setTitle('damit Alle gewinnen');
