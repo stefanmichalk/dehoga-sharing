@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ShareComponent } from './pages/share/share.component';
+import { StaticComponent } from './pages/static/static.component';
 
 export const routes: Routes = [
   { 
@@ -10,6 +11,10 @@ export const routes: Routes = [
   { 
     path: 'share/:id', 
     component: ShareComponent 
+  },
+  {
+    path: 'page/:id',
+    component: StaticComponent
   },
   {
     path: '**',

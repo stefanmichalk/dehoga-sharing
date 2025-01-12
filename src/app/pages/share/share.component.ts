@@ -146,20 +146,24 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private calculateSidebarPosition() {
+    if (!this.isBrowser) return;
+
     const contentCol = document.querySelector('.lg\\:col-span-2');
-    if (contentCol) {
-      requestAnimationFrame(() => {
-        const rect = contentCol.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const boxHeight = document.querySelector('.sidebar-box')?.getBoundingClientRect().height || 0;
-        const top = Math.max(rect.top + window.scrollY, window.scrollY + (windowHeight - boxHeight) / 2);
-        const left = rect.right + 24; 
-        this.sidebarPosition = {
-          top: `${top}px`,
-          left: `${left}px`
-        };
-      });
-    }
+    if (!contentCol) return;
+
+    requestAnimationFrame(() => {
+      const rect = contentCol.getBoundingClientRect();
+      const boxHeight = document.querySelector('.sidebar-box')?.getBoundingClientRect().height || 0;
+      const top = rect.top + window.scrollY - 128; 
+      const left = rect.right + 32; 
+      
+      this.sidebarPosition = {
+        top: `${top}px`,
+        left: `${left}px`
+      };
+      
+      this.isPositionCalculated = true;
+    });
   }
 
   private updateMetaTags() {

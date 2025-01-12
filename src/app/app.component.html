@@ -1,36 +1,15 @@
-<!-- Header -->
-<header class="bg-gradient-to-r from-primary/95 to-primary/90 border-b border-primary/10 shadow-sm">
-  <div class="container mx-auto px-4">
-    <div class="flex items-center justify-between h-24">
-      <!-- Left side with both logos -->
-      <div class="flex items-center gap-8">
-        <img src="./assets/images/damit-alle-gewinnen.png" 
-             alt="Damit Alle Gewinnen Logo" 
-             class="h-10 w-auto">
-        <div class="w-px h-10 bg-white/20"></div>
-        <a routerLink="/" class="flex items-center">
-          <img src="./assets/images/dehoga-logo.png" 
-               alt="DEHOGA Logo" 
-               class="h-9 w-auto brightness-0 invert">
-        </a>
-      </div>
-
-      <!-- Right side - could be used for navigation or other elements -->
-      <div class="flex items-center gap-4">
-        <!-- Navigation could go here -->
-      </div>
-    </div>
-  </div>
-</header>
+<app-header></app-header>
 
 <!-- Main Content -->
 <main class="min-h-screen bg-gray-50">
-  <router-outlet></router-outlet>
+  <div class="mx-auto px-8 sm:px-12 lg:px-16 max-w-[1400px]">
+    <router-outlet></router-outlet>
+  </div>
 </main>
 
 <!-- Footer -->
-<footer class="bg-white border-t mt-16">
-  <div class="container mx-auto px-4 py-8">
+<footer class="bg-white border-t mt-16 hidden">
+  <div class="mx-auto px-8 sm:px-12 lg:px-16 max-w-[1400px] py-8">
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
       <!-- Logos in footer -->
       <div class="flex items-center gap-6">
@@ -42,9 +21,9 @@
              alt="DEHOGA Logo" 
              class="h-7 w-auto opacity-75">
       </div>
-      
+
       <!-- Copyright -->
-      <div class="text-gray-500 text-sm">
+      <div class="text-sm text-gray-600">
         {{ currentYear }} DEHOGA. Alle Rechte vorbehalten.
       </div>
     </div>
