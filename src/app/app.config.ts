@@ -4,6 +4,8 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideMarkdown } from 'ngx-markdown';
 import { routes } from './app.routes';
 import { apiInterceptor } from './interceptors/api.interceptor';
+import { MediacardService } from './services/mediacard.service';
+import { PageService } from './services/page.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,6 +15,8 @@ export const appConfig: ApplicationConfig = {
     ),
     provideMarkdown({
       sanitize: SecurityContext.NONE
-    })
+    }),
+    MediacardService,
+    PageService
   ]
 };

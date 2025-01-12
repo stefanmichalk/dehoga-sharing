@@ -13,44 +13,42 @@
 <!-- Content when loaded -->
 <ng-container *ngIf="card">
   <!-- Hero Section -->
-  <div class="relative overflow-hidden bg-primary h-[60vh]">
+  <div class="relative overflow-hidden bg-primary h-[60vh] sm:h-[60vh]">
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0">
       <img *ngIf="card.banner" 
            [src]="'https://dehoga-campaign.directus.app/assets/' + card.banner" 
-           class="w-full h-[80vh] object-center opacity-70 -translate-y-[20vh]"
-           [style.transform]="'translateY(calc(-20vh + ' + parallaxOffset + 'px))'"
+           class="w-full h-[80vh] object-cover sm:object-top object-center opacity-70 -translate-y-[20vh]"
+           [style.transform]="'translateY(calc(0vh + ' + parallaxOffset + 'px))'"
            alt="">
       <div class="absolute inset-0 bg-gradient-to-b from-primary/0 to-primary/70"></div>
     </div>
 
     <!-- Content -->
-    <div class="relative mx-auto px-8 sm:px-12 lg:px-16 max-w-[1400px] h-full">
-      <div class="h-full flex flex-col justify-end pb-24">
+    <div class="relative mx-auto px-6 sm:px-8 lg:px-16 max-w-[1400px] h-full">
+      <div class="h-full flex flex-col justify-end pb-16 sm:pb-24">
         <div class="flex justify-between items-start">
           <div class="max-w-3xl flex space-x-4">
-              <!-- Accent Bar -->
-          <div class="hidden lg:block w-2 h-24 bg-accent rounded-full"></div>
+            <!-- Accent Bar -->
+            <div class="w-1.5 sm:w-2 h-20 sm:h-24 bg-accent rounded-full"></div>
             <!-- Title -->
-             <div>
-            <h1 class="text-4xl sm:text-5xl font-bold text-white">
-               {{ card.title }}
-            </h1>
-            <p class="mt-0 text-lg text-white">
-              {{ card.description}}
-            </p>
+            <div>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+                {{ card.title }}
+              </h1>
+              <p class="mt-2 sm:mt-4 text-base sm:text-lg text-white/90 line-clamp-3 sm:line-clamp-none">
+                {{ card.description}}
+              </p>
             </div>
           </div>
-
-      
         </div>
       </div>
     </div>
   </div>
 
   <!-- Main Content Area -->
-  <div class="bg-white pt-16">
-    <div class="mx-auto px-8 sm:px-12 lg:px-16 max-w-[1400px]">
+  <div class="bg-white pt-12 sm:pt-16">
+    <div class="mx-auto px-6 sm:px-8 lg:px-16 max-w-[1400px]">
 
       <!-- Main Content -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
@@ -63,11 +61,11 @@
             </svg>
             Zurück zur Übersicht
           </a>
-          <markdown [data]="card.blog" class="prose max-w-none mb-8"></markdown>
+          <markdown [data]="card.blog" class="prose max-w-none mb-8 prose-sm sm:prose-base"></markdown>
 
           <!-- Mobile Box -->
-          <div class="block lg:hidden mt-8">
-            <div class="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg shadow-gray-200/50 p-8 border border-gray-100">
+          <div class="block lg:hidden mt-8 -mx-6 sm:mx-0">
+            <div class="bg-white shadow-lg sm:shadow-gray-200/50 p-6 sm:p-8 sm:rounded-xl sm:border sm:border-gray-100">
               <ng-container *ngTemplateOutlet="boxContent"></ng-container>
             </div>
           </div>
