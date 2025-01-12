@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  padding-bottom: 32rem; // Platz für Footer
+}
+
+.sidebar {
+  position: fixed;
+  top: 8rem;
+  bottom: auto;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  
+  @media (max-width: 1024px) {
+    position: static;
+    max-height: none;
+  }
+  
+  // Verstecke Scrollbar aber behalte Funktionalität
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
