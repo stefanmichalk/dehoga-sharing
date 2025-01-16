@@ -171,7 +171,7 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
 
     const currentUrl = this.document.location.href;
     const imageUrl = this.card.image
-      ? `https://dehoga-campaign.directus.app/assets/${this.card.image}?width=400`
+      ? `https://dehoga-campaign.directus.app/assets/${this.card.image}/banner.png`
       : '';
 
     // Standard Meta Tags
@@ -184,7 +184,6 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
     this.meta.updateTag({property: 'og:type', content: 'article'});
     if (imageUrl) {
       this.meta.updateTag({property: 'og:image', content: imageUrl});
-      this.meta.updateTag({property: 'og:image:type', content: 'image/jpg'});
     }
 
     // Twitter Card
