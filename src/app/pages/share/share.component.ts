@@ -184,7 +184,7 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
     //this.meta.updateTag({ property: 'og:url', content: currentUrl });
     this.meta.updateTag({ property: 'og:type', content: 'article' });
     if (imageUrl) {
-      this.meta.updateTag({ property: 'og:image:secure_url', content: imageUrl });
+      this.meta.updateTag({ property: 'og:image', content: imageUrl });
     }
 
     // Twitter Card
