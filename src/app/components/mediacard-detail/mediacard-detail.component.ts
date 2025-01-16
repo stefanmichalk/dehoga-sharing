@@ -45,7 +45,7 @@ export class MediacardDetailComponent implements OnInit, OnChanges {
     // Open Graph
     this.meta.updateTag({ property: 'og:title', content: this.card.title });
     this.meta.updateTag({ property: 'og:description', content: this.card.description });
-    this.meta.updateTag({ property: 'og:image', content: imageUrl });
+    this.meta.updateTag({ property: 'og:image:url', content: imageUrl });
     this.meta.updateTag({ property: 'og:image:type', content: 'image/jpeg' });
     this.meta.updateTag({ property: 'og:image:width', content: '1200' });
     this.meta.updateTag({ property: 'og:image:height', content: '630' });
