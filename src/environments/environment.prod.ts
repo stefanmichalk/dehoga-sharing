@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://dehoga.de' // Produktionsumgebung - Bitte anpassen
+  baseUrl: 'https://damit-alle-gewinnen.de' // Produktionsumgebung - Bitte anpassen
 };

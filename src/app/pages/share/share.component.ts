@@ -94,11 +94,11 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
   private onImageLoaded() {
     // Force layout recalculation
     window.dispatchEvent(new Event('resize'));
-    
+
     // Initial calculation after resize
     requestAnimationFrame(() => {
       this.calculateSidebarPosition();
-      
+
       // Double check after a short delay
       setTimeout(() => {
         this.calculateSidebarPosition();
@@ -114,7 +114,7 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
           this.calculateSidebarPosition();
         });
       });
-      
+
       this.observer.observe(contentArea, {
         childList: true,
         subtree: true,
@@ -154,14 +154,14 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
     requestAnimationFrame(() => {
       const rect = contentCol.getBoundingClientRect();
       const boxHeight = document.querySelector('.sidebar-box')?.getBoundingClientRect().height || 0;
-      const top = rect.top + window.scrollY - 128; 
-      const left = rect.right + 32; 
-      
+      const top = rect.top + window.scrollY - 128;
+      const left = rect.right + 32;
+
       this.sidebarPosition = {
         top: `${top}px`,
         left: `${left}px`
       };
-      
+
       this.isPositionCalculated = true;
     });
   }
@@ -172,8 +172,8 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log('Updating meta tags for card:', this.card);
 
     const currentUrl = this.document.location.href;
-    const imageUrl = this.card.image 
-      ? `https://dehoga-campaign.directus.app/assets/${this.card.image}`
+    const imageUrl = this.card.image
+      ? `https://dehoga-campaign.directus.app/assets/${this.card.image}.jpeg`
       : '';
 
     // Standard Meta Tags
