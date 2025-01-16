@@ -5,13 +5,12 @@ import { MarkdownModule } from 'ngx-markdown';
 import { MediaCard } from '../../models/mediacard.model';
 import { MediacardService } from '../../services/mediacard.service';
 import { ShareButtonsComponent } from '../../components/share-buttons/share-buttons.component';
-import { MediacardDetailComponent } from '../../components/mediacard-detail/mediacard-detail.component';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-share',
   standalone: true,
-  imports: [CommonModule, RouterModule, MediacardDetailComponent, ShareButtonsComponent, MarkdownModule],
+  imports: [CommonModule, RouterModule, ShareButtonsComponent, MarkdownModule],
   templateUrl: './share.component.html',
   styleUrls: ['./share.component.css']
 })
@@ -153,7 +152,6 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
 
     requestAnimationFrame(() => {
       const rect = contentCol.getBoundingClientRect();
-      const boxHeight = document.querySelector('.sidebar-box')?.getBoundingClientRect().height || 0;
       const top = rect.top + window.scrollY - 128;
       const left = rect.right + 32;
 
@@ -186,7 +184,7 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
     this.meta.updateTag({ property: 'og:url', content: currentUrl });
     this.meta.updateTag({ property: 'og:type', content: 'article' });
     if (imageUrl) {
-      this.meta.updateTag({ property: 'og:image', content: imageUrl });
+      this.meta.updateTag({ property: 'og:image:secure_url', content: imageUrl });
     }
 
     // Twitter Card

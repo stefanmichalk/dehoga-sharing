@@ -4,12 +4,11 @@ import { MarkdownComponent } from 'ngx-markdown';
 import { MediaCard } from '../../models/mediacard.model';
 import { MediacardService } from '../../services/mediacard.service';
 import { Meta, Title } from '@angular/platform-browser';
-import { ShareButtonsComponent } from '../share-buttons/share-buttons.component';
 
 @Component({
   selector: 'app-mediacard-detail',
   standalone: true,
-  imports: [CommonModule, MarkdownComponent, ShareButtonsComponent],
+  imports: [CommonModule, MarkdownComponent],
   templateUrl: './mediacard-detail.component.html',
   styleUrls: ['./mediacard-detail.component.css']
 })
@@ -46,7 +45,7 @@ export class MediacardDetailComponent implements OnInit, OnChanges {
     // Open Graph
     this.meta.updateTag({ property: 'og:title', content: this.card.title });
     this.meta.updateTag({ property: 'og:description', content: this.card.description });
-    this.meta.updateTag({ property: 'og:image', content: imageUrl });
+    this.meta.updateTag({ property: 'og:image:secure_url', content: imageUrl });
     this.meta.updateTag({ property: 'og:url', content: currentUrl });
     this.meta.updateTag({ property: 'og:type', content: 'article' });
 
