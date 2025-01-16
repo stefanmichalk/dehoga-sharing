@@ -35,7 +35,7 @@ export class MediacardDetailComponent implements OnInit, OnChanges {
   private updateMetaTags() {
     if (!this.card) return;
 
-    const imageUrl = this.mediacardService.getImageUrl(this.card.image) + '.jpg';
+    const imageUrl = this.mediacardService.getImageUrl(this.card.image) + '?width=1200';
     const currentUrl = this.document.location.href;
 
     // Standard Meta Tags
@@ -46,7 +46,6 @@ export class MediacardDetailComponent implements OnInit, OnChanges {
     this.meta.updateTag({ property: 'og:title', content: this.card.title });
     this.meta.updateTag({ property: 'og:description', content: this.card.description });
     this.meta.updateTag({ property: 'og:image', content: imageUrl });
-    this.meta.updateTag({ property: 'og:image:secure_url', content: imageUrl });
     this.meta.updateTag({ property: 'og:image:type', content: 'image/jpeg' });
     this.meta.updateTag({ property: 'og:image:width', content: '1200' });
     this.meta.updateTag({ property: 'og:image:height', content: '630' });
