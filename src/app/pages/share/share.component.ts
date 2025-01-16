@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy, HostListener, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
-import { CommonModule, isPlatformBrowser, DOCUMENT } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { MarkdownModule } from 'ngx-markdown';
-import { MediaCard } from '../../models/mediacard.model';
-import { MediacardService } from '../../services/mediacard.service';
-import { ShareButtonsComponent } from '../../components/share-buttons/share-buttons.component';
-import { Meta, Title } from '@angular/platform-browser';
+import {AfterViewInit, Component, HostListener, Inject, OnDestroy, OnInit, PLATFORM_ID} from '@angular/core';
+import {CommonModule, DOCUMENT, isPlatformBrowser} from '@angular/common';
+import {ActivatedRoute, RouterModule} from '@angular/router';
+import {MarkdownModule} from 'ngx-markdown';
+import {MediaCard} from '../../models/mediacard.model';
+import {MediacardService} from '../../services/mediacard.service';
+import {ShareButtonsComponent} from '../../components/share-buttons/share-buttons.component';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-share',
@@ -19,7 +19,7 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
   error: string | null = null;
   showMobileBackButton = false;
   parallaxOffset = 0;
-  sidebarPosition = { top: '0px', left: '0px' };
+  sidebarPosition = {top: '0px', left: '0px'};
   isPositionCalculated = false;
   private isBrowser: boolean;
   private observer: MutationObserver | null = null;
@@ -171,27 +171,28 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
 
     const currentUrl = this.document.location.href;
     const imageUrl = this.card.image
-      ? `https://dehoga-campaign.directus.app/assets/${this.card.image}?width=800`
+      ? `https://dehoga-campaign.directus.app/assets/${this.card.image}?width=400`
       : '';
 
     // Standard Meta Tags
     this.title.setTitle(this.card.title || 'DEHOGA Kampagne');
-    this.meta.updateTag({ name: 'description', content: this.card.description || '' });
+    this.meta.updateTag({name: 'description', content: this.card.description || ''});
 
     // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: this.card.title || 'DEHOGA Kampagne' });
-    this.meta.updateTag({ property: 'og:description', content: this.card.description || '' });
-    this.meta.updateTag({ property: 'og:type', content: 'article' });
+    this.meta.updateTag({property: 'og:title', content: this.card.title || 'DEHOGA Kampagne'});
+    this.meta.updateTag({property: 'og:description', content: this.card.description || ''});
+    this.meta.updateTag({property: 'og:type', content: 'article'});
     if (imageUrl) {
-      this.meta.updateTag({ property: 'og:image', content: imageUrl });
+      this.meta.updateTag({property: 'og:image', content: imageUrl});
+      this.meta.updateTag({property: 'og:image:type', content: 'image/jpg'});
     }
 
     // Twitter Card
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-    this.meta.updateTag({ name: 'twitter:title', content: this.card.title || 'DEHOGA Kampagne' });
-    this.meta.updateTag({ name: 'twitter:description', content: this.card.description || '' });
+    this.meta.updateTag({name: 'twitter:card', content: 'summary_large_image'});
+    this.meta.updateTag({name: 'twitter:title', content: this.card.title || 'DEHOGA Kampagne'});
+    this.meta.updateTag({name: 'twitter:description', content: this.card.description || ''});
     if (imageUrl) {
-      this.meta.updateTag({ name: 'twitter:image', content: imageUrl });
+      this.meta.updateTag({name: 'twitter:image', content: imageUrl});
     }
   }
 }
