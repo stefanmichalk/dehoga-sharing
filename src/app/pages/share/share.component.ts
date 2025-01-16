@@ -171,7 +171,7 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
 
     const currentUrl = this.document.location.href;
     const imageUrl = this.card.image
-      ? `https://dehoga-campaign.directus.app/assets/${this.card.image}/banner.png`
+      ? `https://dehoga-campaign.directus.app/assets/${this.card.image}/banner.jpg`
       : '';
 
     // Standard Meta Tags

@@ -35,7 +35,7 @@ export class MediacardDetailComponent implements OnInit, OnChanges {
   private updateMetaTags() {
     if (!this.card) return;
 
-    const imageUrl = this.mediacardService.getImageUrl(this.card.image) + '/banner.png';
+    const imageUrl = this.mediacardService.getImageUrl(this.card.image) + '/banner.jpg';
     const currentUrl = this.document.location.href;
 
     // Standard Meta Tags
