@@ -46,7 +46,7 @@ export class MediacardDetailComponent implements OnInit, OnChanges {
     this.meta.updateTag({ property: 'og:title', content: this.card.title });
     this.meta.updateTag({ property: 'og:description', content: this.card.description });
     this.meta.updateTag({ property: 'og:image:secure_url', content: imageUrl });
-    this.meta.updateTag({ property: 'og:url', content: currentUrl });
+    //this.meta.updateTag({ property: 'og:url', content: currentUrl });
     this.meta.updateTag({ property: 'og:type', content: 'article' });
 
     // Twitter Card
