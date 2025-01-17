@@ -1,0 +1,72 @@
+@keyframes slideInMobile {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDesktop {
+  from {
+    transform: translateX(100%) translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+:host {
+  display: block;
+}
+
+.shadow-up {
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+// Mobile animation
+@media (max-width: 640px) {
+  .flex-col > div {
+    animation: slideInMobile 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+// Desktop animation
+@media (min-width: 641px) {
+  .flex-col > div {
+    animation: slideInDesktop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+// Progress bar animation
+.progress-bar {
+  transform-origin: left;
+  animation: progress linear;
+  animation-play-state: running;
+  will-change: transform;
+}
+
+// Pause animation on hover
+.pause-animation {
+  animation-play-state: paused !important;
+}
+
+// Also pause the timer in the service
+.group:hover {
+  .progress-bar {
+    animation-play-state: paused;
+  }
+}

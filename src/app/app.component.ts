@@ -5,12 +5,22 @@ import { Meta, Title } from '@angular/platform-browser';
 import { filter } from 'rxjs';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
-  templateUrl: './app.component.html',
+  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent, ToastComponent],
+  template: `
+    <app-header></app-header>
+    <main class="min-h-screen bg-gray-50">
+      <div class="mx-auto px-0 sm:px-12 lg:px-16 max-w-[1400px]">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+    <app-footer></app-footer>
+    <app-toast></app-toast>
+  `,
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {

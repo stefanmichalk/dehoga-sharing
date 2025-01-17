@@ -49,7 +49,7 @@ export class MediacardDetailComponent implements OnInit, OnChanges {
     this.meta.updateTag({ property: 'og:image:type', content: 'image/jpeg' });
     this.meta.updateTag({ property: 'og:image:width', content: '1200' });
     this.meta.updateTag({ property: 'og:image:height', content: '630' });
-    //this.meta.updateTag({ property: 'og:url', content: currentUrl });
+    this.meta.updateTag({ property: 'og:url', content: currentUrl });
     this.meta.updateTag({ property: 'og:type', content: 'article' });
 
     // Twitter Card
