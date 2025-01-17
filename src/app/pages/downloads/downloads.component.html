@@ -1,0 +1,93 @@
+<div class="container mx-auto px-4 py-8 w-full">
+  <h1 class="text-3xl font-bold mb-6">Downloads</h1>
+
+  <!-- Navigation -->
+  <div class="mb-8 border-b border-gray-200">
+    <nav class="flex space-x-1">
+      <button
+        (click)="selectCategory('all')"
+        [class.text-gray-900]="selectedCategory === 'all'"
+        [class.font-extrabold]="selectedCategory === 'all'"
+        [class.border-b-[6px]]="selectedCategory === 'all'"
+        [class.border-primary]="selectedCategory === 'all'"
+        [class.text-gray-400]="selectedCategory !== 'all'"
+        [class.font-normal]="selectedCategory !== 'all'"
+        class="px-4 py-2 text-sm hover:text-gray-900 transition-colors">
+        Alle
+      </button>
+      <button
+        *ngFor="let cat of categories"
+        (click)="selectCategory(cat.type)"
+        [class.text-gray-900]="selectedCategory === cat.type"
+        [class.font-extrabold]="selectedCategory === cat.type"
+        [class.border-b-[6px]]="selectedCategory === cat.type"
+        [class.border-primary]="selectedCategory === cat.type"
+        [class.text-gray-400]="selectedCategory !== cat.type"
+        [class.font-normal]="selectedCategory !== cat.type"
+        class="px-4 py-2 text-sm hover:text-gray-900 transition-colors">
+        {{cat.label}}
+      </button>
+    </nav>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="flex justify-center items-center py-12">
+    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+    <div class="flex">
+      <div class="ml-3">
+        <p class="text-sm text-red-700">{{ error }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Downloads Grid -->
+  <div *ngIf="!loading && !error">
+    <div class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div *ngFor="let download of filteredDownloads" 
+           class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+        <!-- Preview Image -->
+        <div class="aspect-video bg-gray-100">
+          <img [src]="getPreviewUrl(download)" 
+               [alt]="download.name"
+               class="w-full h-full object-contain">
+        </div>
+        
+        <!-- Content -->
+        <div class="p-4 md:p-6">
+          <h3 class="text-lg md:text-xl font-semibold mb-2">{{ download.name }}</h3>
+          <p *ngIf="download.description" class="text-gray-600 text-sm md:text-base mb-4">{{ download.description }}</p>
+          
+          <!-- Tags -->
+          <div *ngIf="download.tags" class="flex flex-wrap gap-2 mb-4">
+            <span *ngFor="let tag of download.tags" 
+                  class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">
+              {{ tag }}
+            </span>
+          </div>
+          
+          <!-- Download Button -->
+          <button (click)="downloadFile(download)"
+                  class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-primary/90 transition-colors flex items-center justify-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            Download
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="filteredDownloads.length === 0" class="text-center py-12">
+      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+      </svg>
+      <h3 class="mt-2 text-sm font-medium text-gray-900">Keine Downloads gefunden</h3>
+      <p class="mt-1 text-sm text-gray-500">Versuchen Sie andere Filter-Einstellungen.</p>
+    </div>
+  </div>
+</div>

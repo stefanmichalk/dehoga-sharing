@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+button {
+  border: none;
+  outline: none;
+  font-weight: 500;
+  width: 100%;
+  
+  &:focus-visible {
+    outline: 2px solid theme('colors.primary.DEFAULT');
+    outline-offset: 2px;
+  }
+}

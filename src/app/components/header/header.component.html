@@ -36,6 +36,16 @@
             {{ item.title }}
           </a>
         </ng-container>
+        
+        <!-- Downloads Link -->
+        <a routerLink="/downloads"
+           [ngClass]="{
+             'border-b-2 border-accent text-white': isActive('/downloads'),
+             'text-white/90 hover:text-white': !isActive('/downloads')
+           }"
+           class="px-3.5 py-1 text-[16px] font-medium">
+          Downloads
+        </a>
       </nav>
 
       <!-- Mobile Menu Button -->
@@ -91,6 +101,17 @@
             {{ item.title }}
           </a>
         </ng-container>
+        
+        <!-- Downloads Link Mobile -->
+        <a routerLink="/downloads"
+           (click)="toggleMobileMenu()"
+           [ngClass]="{
+             'border-b-2 border-accent text-white': isActive('/downloads'),
+             'text-white/90 hover:text-white': !isActive('/downloads')
+           }"
+           class="block px-3.5 py-1 text-[16px] font-medium">
+          Downloads
+        </a>
       </div>
     </div>
   </div>

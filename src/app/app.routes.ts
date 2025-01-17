@@ -17,6 +17,10 @@ export const routes: Routes = [
     component: StaticComponent
   },
   {
+    path: 'downloads',
+    loadComponent: () => import('./pages/downloads/downloads.component').then(m => m.DownloadsComponent)
+  },
+  {
     path: '**',
     redirectTo: ''
   }
