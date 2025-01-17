@@ -1,0 +1,14 @@
+// Menu Button Animation
+.menu-button {
+  @apply relative cursor-pointer;
+}
+
+// Mobile Menu Animation
+.mobile-menu {
+  @apply transform transition-all duration-300 ease-in-out overflow-hidden;
+  max-height: 0;
+  
+  &.open {
+    max-height: 500px; // Großer Wert, der auf jeden Fall ausreicht
+  }
+}
