@@ -170,9 +170,10 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log('Updating meta tags for card:', this.card);
 
     const currentUrl = this.document.location.href;
-    const imageUrl = this.card.image
-      ? `https://dehoga-campaign.directus.app/assets/${this.card.image}/banner.jpg`
-      : '';
+    const imageUrl = this.card.imageUrl;
+    //this.card.image
+    //? `https://dehoga-campaign.directus.app/assets/${this.card.image}/banner.jpg`
+    //: '';
 
     // Standard Meta Tags
     this.title.setTitle(this.card.title || 'DEHOGA Kampagne');

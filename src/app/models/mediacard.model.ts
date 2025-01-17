@@ -11,6 +11,7 @@ export interface MediaCard {
   redirect: string;
   banner?: string;
   file?: string;
+  imageUrl: string;
 }
 
 export interface MediaCardResponse {
