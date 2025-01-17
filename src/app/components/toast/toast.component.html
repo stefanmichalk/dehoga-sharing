@@ -1,8 +1,8 @@
-<div class="fixed z-50 flex flex-col gap-3 transition-all duration-300 ease-out
+<div class="fixed z-30 pointer-events-none flex flex-col gap-3 transition-all duration-300 ease-out
             sm:top-20 sm:right-4 sm:left-auto sm:w-[400px]
             bottom-0 right-0 left-0 w-full">
   <div *ngFor="let toast of toasts"
-       class="group relative overflow-hidden flex flex-col gap-2 px-5 py-4 
+       class="group relative overflow-hidden flex flex-col gap-2 px-5 py-4 pointer-events-auto
               backdrop-blur-md bg-white/95 transform transition-all duration-300 ease-out
               hover:bg-white/98 
               sm:rounded-2xl sm:mx-0 sm:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:sm:shadow-[0_12px_40px_rgb(0,0,0,0.16)]

@@ -30,7 +30,7 @@ export class DownloadsComponent implements OnInit {
       { type: 'poster', label: 'Poster' },
       { type: 'postcard', label: 'Postkarten' },
       { type: 'file', label: 'Dokumente' },
-      { type: 'video', label: 'Videos' }
+      { type: 'video', label: 'Videos' },
     ];
   }
 
@@ -88,6 +88,7 @@ export class DownloadsComponent implements OnInit {
   }
 
   selectCategory(category: string): void {
+    console.log('Selecting category:', category);
     this.selectedCategory = category;
     this.applyFilters();
   }
@@ -102,6 +103,12 @@ export class DownloadsComponent implements OnInit {
   }
 
   private applyFilters(): void {
+    console.log('Applying filters:', {
+      selectedCategory: this.selectedCategory,
+      selectedTags: this.selectedTags,
+      totalDownloads: this.downloads.length
+    });
+
     let filtered = [...this.downloads];
 
     // Tag-Filter anwenden
@@ -113,11 +120,13 @@ export class DownloadsComponent implements OnInit {
 
     // Kategorie-Filter anwenden
     if (this.selectedCategory !== 'all') {
-      filtered = filtered.filter(download => 
-        download.type === this.selectedCategory
-      );
+      filtered = filtered.filter(download => {
+        console.log('Checking download:', download.name, 'type:', download.type, 'against category:', this.selectedCategory);
+        return download.type === this.selectedCategory;
+      });
     }
 
+    console.log('Filtered downloads:', filtered.length);
     this.filteredDownloads = filtered;
   }
 
