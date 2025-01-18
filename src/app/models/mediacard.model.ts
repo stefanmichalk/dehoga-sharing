@@ -12,6 +12,9 @@ export interface MediaCard {
   banner?: string;
   file?: string;
   imageUrl: string;
+  hasVideoContent?: boolean;
+  videoPlayUrl?: string;
+  videoDownloadUrl?: string;
 }
 
 export interface MediaCardResponse {

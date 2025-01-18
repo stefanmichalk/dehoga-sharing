@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, HostListener, Inject, OnDestroy, OnInit, PLATFORM_ID} from '@angular/core';
+import {AfterViewInit, Component, HostListener, Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild, ElementRef} from '@angular/core';
 import {CommonModule, DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {ActivatedRoute, RouterModule} from '@angular/router';
 import {MarkdownModule} from 'ngx-markdown';
 import {MediaCard} from '../../models/mediacard.model';
 import {MediacardService} from '../../services/mediacard.service';
 import {ShareButtonsComponent} from '../../components/share-buttons/share-buttons.component';
-import {Meta, Title} from '@angular/platform-browser';
+import {Meta, Title, DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-share',
@@ -23,6 +23,7 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
   isPositionCalculated = false;
   private isBrowser: boolean;
   private observer: MutationObserver | null = null;
+  @ViewChild('videoPlayer') videoPlayer?: ElementRef<HTMLVideoElement>;
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
@@ -40,9 +41,10 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private route: ActivatedRoute,
-    private mediacardService: MediacardService,
+    public mediacardService: MediacardService,
     private meta: Meta,
     private title: Title,
+    private sanitizer: DomSanitizer,
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
@@ -195,5 +197,9 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
     if (imageUrl) {
       this.meta.updateTag({name: 'twitter:image', content: imageUrl});
     }
+  }
+
+  getImageUrl(path: string): string {
+    return this.mediacardService.getImageUrl(path);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, Inject, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { MarkdownComponent } from 'ngx-markdown';
 import { MediaCard } from '../../models/mediacard.model';
@@ -14,6 +14,7 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class MediacardDetailComponent implements OnInit, OnChanges {
   @Input() card!: MediaCard;
+  @ViewChild('videoPlayer') videoPlayer?: ElementRef<HTMLVideoElement>;
 
   constructor(
     public mediacardService: MediacardService,
@@ -51,6 +52,14 @@ export class MediacardDetailComponent implements OnInit, OnChanges {
     this.meta.updateTag({ property: 'og:image:height', content: '630' });
     this.meta.updateTag({ property: 'og:url:secure_url', content: currentUrl });
     this.meta.updateTag({ property: 'og:type', content: 'article' });
+
+    // Add video meta tags if video content is present
+    if (this.card.hasVideoContent && this.card.videoPlayUrl) {
+      this.meta.updateTag({ property: 'og:video', content: this.card.videoPlayUrl });
+      this.meta.updateTag({ property: 'og:video:type', content: 'video/mp4' });
+      this.meta.updateTag({ property: 'og:video:width', content: '1280' });
+      this.meta.updateTag({ property: 'og:video:height', content: '720' });
+    }
 
     // Twitter Card
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
