@@ -180,7 +180,7 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
     this.meta.updateTag({name: 'description', content: this.card.description || ''});
 
     // Open Graph
-    this.meta.updateTag({property: 'og:url', content: currentUrl});
+    this.meta.updateTag({property: 'og:url:secure_url', content: currentUrl});
     this.meta.updateTag({property: 'og:title', content: this.card.title || 'DEHOGA Kampagne'});
     this.meta.updateTag({property: 'og:description', content: this.card.description || ''});
     this.meta.updateTag({property: 'og:type', content: 'article'});
