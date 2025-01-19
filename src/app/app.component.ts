@@ -48,8 +48,13 @@ export class AppComponent implements OnInit {
         this.title.setTitle('damit Alle gewinnen');
         this.meta.updateTag({ name: 'description', content: 'damit Alle gewinnen' });
         this.meta.updateTag({ property: 'og:title', content: 'damit Alle gewinnen' });
-        this.meta.updateTag({ property: 'og:description', content: 'damit Alle gewinnen' });
-        this.meta.removeTag("property='og:image'");
+        this.meta.updateTag({ property: 'og:description', content: 'Zeit für echte Lösungen - damit Alle gewinnen' });
+        this.meta.updateTag({ property: 'og:image', content: 'https://dehoga.four-lines.de/main.jpg' });
+
+        // twitter
+        this.meta.updateTag({ name: 'twitter:title', content: 'damit Alle gewinnen' });
+        this.meta.updateTag({ name: 'twitter:description', content: 'Zeit für echte Lösungen - damit Alle gewinnen' });
+        this.meta.updateTag({ name: 'twitter:image', content: 'https://dehoga.four-lines.de/main.jpg' });
       }
     });
   }
