@@ -58,7 +58,7 @@
         <!-- Main Content -->
         <div class="lg:col-span-2">
           <!-- Back Button -->
-          <a routerLink="/" class="inline-flex items-center text-accent hover:text-accent-dark mb-8 transition-colors">
+          <a routerLink="/social-media" class="inline-flex items-center text-accent hover:text-accent-dark mb-8 transition-colors">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
@@ -66,18 +66,20 @@
           </a>
 
           <!-- Video Section -->
-          <div *ngIf="card.hasVideoContent && card.videoPlayUrl" class="relative aspect-video mb-8 rounded-xl overflow-hidden bg-black">
-            <video
-              #videoPlayer
-              class="w-full h-full object-contain"
-              controls
-              preload="metadata"
-              [poster]="card.banner ? 'https://dehoga-campaign.directus.app/assets/' + card.banner : getImageUrl(card.imageUrl)"
-              playsinline
-            >
-              <source [src]="card.videoPlayUrl" type="video/mp4">
-              <p>Ihr Browser unterstützt das Video-Format nicht.</p>
-            </video>
+          <div class="flex justify-center">
+            <div *ngIf="card.hasVideoContent && card.videoPlayUrl" class="relative w-full max-w-[500px] bg-black rounded-xl overflow-hidden mb-8" style="aspect-ratio: 9/16;">
+              <video
+                #videoPlayer
+                class="absolute inset-0 w-full h-full"
+                style="object-fit: cover;"
+                controls
+                preload="metadata"
+                playsinline
+              >
+                <source [src]="card.videoPlayUrl" type="video/mp4">
+                <p>Ihr Browser unterstützt das Video-Format nicht.</p>
+              </video>
+            </div>
           </div>
 
           <markdown [data]="card.blog" class="prose max-w-none mb-8 prose-sm sm:prose-base"></markdown>
@@ -158,7 +160,7 @@
 
 <!-- Back Button -->
 <div class="hidden fixed top-4 left-4 z-50">
-  <a routerLink="/" class="inline-flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm shadow-lg text-gray-700 hover:text-accent transition-all group">
+  <a routerLink="/social-media" class="inline-flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm shadow-lg text-gray-700 hover:text-accent transition-all group">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 transform transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7m-7 7h18" />
     </svg>
