@@ -14,8 +14,7 @@
 <ng-container *ngIf="card">
   <!-- Hero Section -->
   <div class="relative overflow-hidden bg-primary h-[60vh] sm:h-[60vh]"
-   [class.sm:h-[30vh]]="!card.banner"
-   [class.h-[30vh]]="!card.banner"
+   [ngClass]="{'h-[35vh] sm:h-[35vh]': !card.banner}"
   >
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0">
