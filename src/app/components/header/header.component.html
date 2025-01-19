@@ -101,15 +101,6 @@
        [class.open]="mobileMenuOpen">
     <div class="bg-primary">
       <div class="px-8 sm:px-12 py-4 space-y-2">
-        <a routerLink="/social-media"
-           (click)="toggleMobileMenu()"
-           [ngClass]="{
-             'border-b-2 border-accent text-white': isActive('/social-media'),
-             'text-white/90 hover:text-white': !isActive('/social-media')
-           }"
-           class="block px-3.5 py-1 text-[16px] font-medium">
-          Social Media
-        </a>
         <ng-container *ngFor="let item of menuItems">
           <a [routerLink]="['/page', item.id]"
              (click)="toggleMobileMenu()"
@@ -121,6 +112,16 @@
             {{ item.title }}
           </a>
         </ng-container>
+
+        <a routerLink="/social-media"
+        (click)="toggleMobileMenu()"
+        [ngClass]="{
+          'border-b-2 border-accent text-white': isActive('/social-media'),
+          'text-white/90 hover:text-white': !isActive('/social-media')
+        }"
+        class="block px-3.5 py-1 text-[16px] font-medium">
+       Social Media
+     </a>
         
         <!-- Downloads Link Mobile -->
         <a routerLink="/downloads"

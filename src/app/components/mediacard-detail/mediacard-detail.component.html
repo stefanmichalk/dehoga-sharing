@@ -4,30 +4,33 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div class="lg:col-span-8">
           <!-- Video Section -->
-          <div *ngIf="card.hasVideoContent" class="relative aspect-video mb-8 rounded-xl overflow-hidden bg-black">
-            <!-- Video Player -->
-            <video
-              #videoPlayer
-              class="w-full h-full object-contain"
-              [src]="card.videoPlayUrl"
-              controls
-              preload="metadata"
-              poster="{{mediacardService.getImageUrl(card.imageUrl)}}"
-            >
-              <source [src]="card.videoPlayUrl" type="video/mp4">
-              Ihr Browser unterstützt das Video-Format nicht.
-            </video>
-            
-            <!-- Download Button -->
-            <a 
-              *ngIf="card.videoDownloadUrl"
-              [href]="card.videoDownloadUrl"
-              class="absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 px-4 py-2 rounded-lg shadow-lg transition-all flex items-center gap-2"
-              download
-            >
-              <i class="fas fa-download"></i>
-              <span>Download</span>
-            </a>
+          <div class="flex justify-center">
+            <div *ngIf="card.hasVideoContent" class="relative w-full max-w-[500px] bg-black" style="aspect-ratio: 9/16;">
+              <!-- Video Player -->
+              <video
+                #videoPlayer
+                class="absolute inset-0 w-full h-full"
+                style="object-fit: cover;"
+                [src]="card.videoPlayUrl"
+                controls
+                preload="metadata
+                playsinline"
+              >
+                <source [src]="card.videoPlayUrl" type="video/mp4">
+                Ihr Browser unterstützt das Video-Format nicht.
+              </video>
+              
+              <!-- Download Button -->
+              <a 
+                *ngIf="card.videoDownloadUrl"
+                [href]="card.videoDownloadUrl"
+                class="absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 px-4 py-2 rounded-lg shadow-lg transition-all flex items-center gap-2"
+                download
+              >
+                <i class="fas fa-download"></i>
+                <span>Download</span>
+              </a>
+            </div>
           </div>
 
           <div class="prose prose-lg max-w-none">
