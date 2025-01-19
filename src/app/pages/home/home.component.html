@@ -1,32 +1,24 @@
-<!-- Main Content -->
-<div class="container mx-auto px-4 py-12">
-  <!-- Header Section -->
-  <div class="relative text-center mb-12">
-    <!-- Decorative background element -->
-    <div class="absolute inset-0 -skew-y-3 bg-gradient-to-r from-accent/5 to-primary/5 rounded-3xl -z-10"></div>
-    
-    <div class="py-8">
-      <!-- Icon -->
-      <div class="mb-4">
-        <i class="fas fa-share-alt text-4xl text-accent-light mb-4"></i>
-      </div>
-      
-      <!-- Title with enhanced styling -->
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-accent-light to-primary-dark bg-clip-text text-transparent">
-        Social Media Hub
-      </h1>
-      
-      <!-- Description with enhanced styling -->
-      <p class="text-gray-600 max-w-2xl mx-auto text-lg">
-        Hier können Sie unsere Beiträge ganz einfach über Ihre sozialen Netzwerke teilen.
-      </p>
+<!-- Hero Section -->
+<div class="mb-2 sm:mb-12 relative h-[60vh] min-h-[400px] overflow-hidden">
+  <!-- Parallax Background -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
+         [ngStyle]="{
+           'background-image': 'url(assets/images/hero-bg.jpg)',
+           'transform': 'translateY(' + parallaxOffset + 'px)'
+         }">
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-[#4B2E83] bg-opacity-40"></div>
     </div>
   </div>
-  <!-- Cards Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-    <app-share-card
-      *ngFor="let card of mediaCards"
-      [card]="card">
-    </app-share-card>
+
+  <!-- Content -->
+  <div class="relative z-10 h-full flex flex-col items-center justify-center text-white px-4">
+    <img src="assets/images/damit-alle-gewinnen.png" alt="Hero Image">
   </div>
+</div>
+
+<!-- Main Content -->
+<div class="home-container">
+  <app-blocks-container [blocks]="blocks" [relatedPage]="'home'"></app-blocks-container>
 </div>

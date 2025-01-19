@@ -21,6 +21,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/downloads/downloads.component').then(m => m.DownloadsComponent)
   },
   {
+    path: 'social-media',
+    loadComponent: () => import('./pages/social-media/social-media.component').then(m => m.SocialMediaComponent)
+  },
+  {
     path: '**',
     redirectTo: ''
   }

@@ -25,7 +25,18 @@
       </div>
 
       <!-- Navigation -->
-      <nav class="hidden md:flex items-center gap-8">
+      <nav class="hidden md:flex items-center gap-1">
+
+         <!-- Downloads Link -->
+         <a routerLink="/social-media"
+         [ngClass]="{
+           'border-b-2 border-accent text-white': isActive('/social-media'),
+           'text-white/90 hover:text-white': !isActive('/social-media')
+         }"
+         class="px-3.5 py-1 text-[16px] font-medium">
+        Social Media
+      </a>
+
         <ng-container *ngFor="let item of menuItems">
           <a [routerLink]="['/page', item.id]"
              [ngClass]="{
@@ -40,7 +51,7 @@
         <!-- Downloads Link -->
         <a routerLink="/downloads"
            [ngClass]="{
-             'border-b-2 border-accent text-white': isActive('/downloads'),
+             'border-b-4 border-accent text-white': isActive('/downloads'),
              'text-white/90 hover:text-white': !isActive('/downloads')
            }"
            class="px-3.5 py-1 text-[16px] font-medium">
