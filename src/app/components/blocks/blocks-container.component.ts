@@ -26,24 +26,19 @@ import { BlockService } from '../../services/block.service';
 export class BlocksContainerComponent implements OnChanges {
   @Input() blocks: Block[] = [];
   @Input() relatedPage: string = '';
-  
+
   constructor(private blockService: BlockService) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['blocks'] || changes['relatedPage']) {
-      console.log('Blocks input changed:', this.blocks);
-      console.log('RelatedPage:', this.relatedPage);
-      console.log('Filtered blocks:', this.filteredBlocks);
-    }
+
   }
-  
+
   get filteredBlocks(): Block[] {
-    const filtered = this.blocks.filter(block => 
-      block.relatedPage === this.relatedPage && 
+    const filtered = this.blocks.filter(block =>
+      block.relatedPage === this.relatedPage &&
       block.status === 'published'
     ).sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    
-    console.log('Filtered blocks result:', filtered);
+
     return filtered;
   }
 }

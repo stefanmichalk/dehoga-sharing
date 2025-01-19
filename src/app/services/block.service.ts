@@ -15,7 +15,6 @@ export class BlockService {
   getBlocks(): Observable<Block[]> {
     // Add filter for published status
     const url = `${this.API_URL}?filter[status][_eq]=published`;
-    console.log('Fetching blocks from:', url);
     return this.http
       .get<{ data: Block[] }>(url)
       .pipe(

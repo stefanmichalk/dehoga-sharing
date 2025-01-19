@@ -16,15 +16,13 @@ export class SharingService {
     // Directus Filter Syntax
     const url = `${this.API_URL}?filter={"status":{"_eq":"published"}}`;
     console.log('Fetching sharing buttons from:', url);
-    
+
     return this.http.get<SharingResponse>(url)
       .pipe(
         map(response => {
-          console.log('API Response:', response);
           if (response && Array.isArray(response.data)) {
             return response.data.sort((a, b) => a.sort - b.sort);
           }
-          console.error('Unexpected API response structure:', response);
           return [];
         })
       );
@@ -38,10 +36,8 @@ export class SharingService {
 
     // Baue die vollständige Detail-URL
     const detailUrl = `${environment.baseUrl}/share/${cardId}`;
-    console.log('Detail URL:', detailUrl);
 
     if (!button.shareurl) {
-      console.error('No shareurl provided in button:', button);
       return '';
     }
 

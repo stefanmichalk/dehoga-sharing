@@ -43,7 +43,6 @@ export class NavigationComponent implements OnInit {
             path: `/page/${page.id}`,
             label: page.title
           }));
-        console.log('Menu items:', this.menuItems);
       },
       error: (error) => {
         console.error('Error loading menu items:', error);

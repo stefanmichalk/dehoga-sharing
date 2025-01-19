@@ -28,11 +28,6 @@ export class MediacardService {
       .get<{ data: MediaCard }>(url)
       .pipe(
         tap(response => {
-          console.log('Raw API Response:', response);
-          console.log('Image fields:', {
-            banner: response.data.banner,
-            image: response.data.image
-          });
         }),
         map((response) => response.data)
       );
@@ -40,10 +35,10 @@ export class MediacardService {
 
   getImageUrl(image: string | null): string {
     if (!image) return '';
-    
+
     // Handle full URLs
     if (image.startsWith('http')) return image;
-    
+
     // Handle Directus asset IDs with /assets/ path
     return `${this.ASSETS_URL}/assets/${image}`;
   }

@@ -21,9 +21,8 @@ sharp(Buffer.from(svg))
       .toFile(path.join(__dirname, '../src/favicon.ico'))
       .then(() => console.log('favicon.ico generated successfully'))
       .catch(err => console.error('Error generating ICO:', err));
-    
+
     // Also save the SVG
     fs.writeFileSync(path.join(__dirname, '../src/favicon.svg'), svg);
-    console.log('favicon.svg generated successfully');
   })
   .catch(err => console.error('Error:', err));

@@ -33,14 +33,11 @@ export class ShareButtonsComponent implements OnInit {
   error: string | null = null;
 
   constructor(private sharingService: SharingService) {
-    console.log('ShareButtonsComponent initialized');
   }
 
   ngOnInit() {
-    console.log('ShareButtonsComponent.ngOnInit - Loading buttons...');
     this.sharingService.getSharingButtons().subscribe({
       next: (buttons) => {
-        console.log('Received buttons:', buttons);
         this.sharingButtons = buttons;
         this.error = null;
       },
@@ -53,9 +50,7 @@ export class ShareButtonsComponent implements OnInit {
   }
 
   share(button: SharingButton) {
-    console.log('Sharing via button:', button);
     const shareUrl = this.sharingService.getButtonUrl(button, this.cardId, this.title);
-    console.log('Opening share URL:', shareUrl);
     window.open(shareUrl, '_blank');
   }
 }

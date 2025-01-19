@@ -127,7 +127,6 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
   private loadCard(id: string) {
     this.mediacardService.getMediaCard(id).subscribe({
       next: (card) => {
-        console.log('Loaded card:', card);
         this.card = card;
         this.error = null;
         if (card) {
@@ -169,7 +168,6 @@ export class ShareComponent implements OnInit, OnDestroy, AfterViewInit {
   private updateMetaTags() {
     if (!this.card) return;
 
-    console.log('Updating meta tags for card:', this.card);
 
     const currentUrl = this.document.location.href;
     const imageUrl = this.card.imageUrl;

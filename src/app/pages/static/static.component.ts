@@ -56,7 +56,6 @@ export class StaticComponent implements OnInit {
     this.pagesService.getPage(id).subscribe({
       next: (page) => {
         this.page = page;
-        console.log('Loaded page:', page);
       },
       error: (error) => {
         console.error('Error loading page:', error);

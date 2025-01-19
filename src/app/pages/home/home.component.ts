@@ -55,10 +55,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   private loadBlocks() {
     this.blockService.getBlocks().subscribe({
       next: (blocks) => {
-        console.log('Loaded blocks:', blocks);
         this.blocks = blocks;
         // Log the blocks that will be passed to the component
-        console.log('Blocks to be displayed:', this.blocks);
       },
       error: (error) => {
         console.error('Error loading blocks:', error);

@@ -11,8 +11,7 @@ export function apiInterceptor(
   request: HttpRequest<unknown>,
   next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> {
-  console.log(`🚀 API Request to: ${request.url}`);
-  
+
   return next(request).pipe(
     catchError((error: HttpErrorResponse) => {
       console.error('❌ API Error:', {

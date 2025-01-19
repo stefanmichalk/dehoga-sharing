@@ -18,11 +18,9 @@ export class DownloadsService {
   }
 
   getDownloads(): Observable<Download[]> {
-    console.log('Fetching downloads from:', this.apiUrl);
     return this.http.get<DirectusResponse<Download>>(this.apiUrl)
       .pipe(
         tap(response => {
-          console.log('Raw API Response:', response);
           if (!response.data) {
             console.warn('API Response has no data property');
           }
@@ -53,23 +51,15 @@ export class DownloadsService {
 
     // Entferne mögliche Anführungszeichen
     const cleanFileId = fileId.replace(/"/g, '');
-    
-    console.log('Processing file URL:', {
-      originalFileId: fileId,
-      cleanFileId,
-      options
-    });
-    
+
     const baseUrl = `${this.assetUrl}/${cleanFileId}`;
     let finalUrl = baseUrl;
-    
+
     // Wenn es ein Bild-Type ist und eine Preview angefordert wird, füge die Breite hinzu
     if (options?.isPreview && ['card', 'poster', 'postcard'].includes(options.type || '')) {
       finalUrl = `${baseUrl}?width=400&format=webp&quality=60`;
-      console.log('Added preview parameters to URL');
     }
-    
-    console.log('Final URL:', finalUrl);
+
     return finalUrl;
   }
 
@@ -86,7 +76,7 @@ export class DownloadsService {
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = downloadUrl;
-      
+
       // Dateiname aus dem Original-Namen oder fallback
       const filename = download.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
       const extension = this.getFileExtension(download.type);

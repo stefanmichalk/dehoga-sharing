@@ -35,25 +35,20 @@ export class DownloadsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Component initialized');
-    console.log('Categories:', this.categories);
     this.loadDownloads();
   }
 
   private loadDownloads(): void {
-    console.log('Loading downloads...');
     this.loading = true;
     this.error = null;
 
     this.downloadsService.getDownloads().subscribe({
       next: (downloads) => {
-        console.log('Raw downloads from API:', downloads);
         this.downloads = downloads;
-        
+
         // Initialize tags
         this.availableTags = this.getAllUniqueTags(downloads);
-        console.log('Available tags extracted:', this.availableTags);
-        
+
         // Initialize filtered downloads
         this.filteredDownloads = [...downloads];
         this.loading = false;
@@ -67,28 +62,23 @@ export class DownloadsComponent implements OnInit {
   }
 
   private getAllUniqueTags(downloads: Download[]): string[] {
-    console.log('Extracting tags from downloads:', downloads);
     const tagsSet = new Set<string>();
-    
+
     downloads.forEach(download => {
-      console.log('Processing download:', download.name, 'tags:', download.tags);
       if (download.tags && Array.isArray(download.tags)) {
         download.tags.forEach(tag => {
           if (tag && typeof tag === 'string') {
-            console.log('Adding tag:', tag);
             tagsSet.add(tag.trim());
           }
         });
       }
     });
-    
+
     const sortedTags = Array.from(tagsSet).sort();
-    console.log('Final sorted tags:', sortedTags);
     return sortedTags;
   }
 
   selectCategory(category: string): void {
-    console.log('Selecting category:', category);
     this.selectedCategory = category;
     this.applyFilters();
   }
@@ -103,17 +93,11 @@ export class DownloadsComponent implements OnInit {
   }
 
   private applyFilters(): void {
-    console.log('Applying filters:', {
-      selectedCategory: this.selectedCategory,
-      selectedTags: this.selectedTags,
-      totalDownloads: this.downloads.length
-    });
-
     let filtered = [...this.downloads];
 
     // Tag-Filter anwenden
     if (this.selectedTags.length > 0) {
-      filtered = filtered.filter(download => 
+      filtered = filtered.filter(download =>
         download.tags?.some(tag => this.selectedTags.includes(tag))
       );
     }
@@ -121,12 +105,10 @@ export class DownloadsComponent implements OnInit {
     // Kategorie-Filter anwenden
     if (this.selectedCategory !== 'all') {
       filtered = filtered.filter(download => {
-        console.log('Checking download:', download.name, 'type:', download.type, 'against category:', this.selectedCategory);
         return download.type === this.selectedCategory;
       });
     }
 
-    console.log('Filtered downloads:', filtered.length);
     this.filteredDownloads = filtered;
   }
 
@@ -137,7 +119,7 @@ export class DownloadsComponent implements OnInit {
         type: download.type
       }) || '';
     }
-    
+
     return this.downloadsService.getFileUrl(download.preview) || '';
   }
 
