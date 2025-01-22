@@ -22,6 +22,33 @@ export class ShareCardComponent {
     private toastService: ToastService
   ) {}
 
+  playVideo(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (this.card.videoPlayUrl) {
+      window.open(this.card.videoPlayUrl, '_blank');
+    }
+  }
+
+  copyTag(tag: string) {
+    navigator.clipboard.writeText(`#${tag}`).then(() => {
+      this.toastService.show(`#${tag} in die Zwischenablage kopiert`, 'success', 2000);
+    }).catch(() => {
+      this.toastService.show('Fehler beim Kopieren', 'error');
+    });
+  }
+
+  copyAllTags() {
+    if (this.card.tags?.length) {
+      const allTags = this.card.tags.map(tag => `#${tag}`).join(' ');
+      navigator.clipboard.writeText(allTags).then(() => {
+        this.toastService.show(`${this.card.tags!.length} Hashtags in die Zwischenablage kopiert`, 'success', 2000);
+      }).catch(() => {
+        this.toastService.show('Fehler beim Kopieren', 'error');
+      });
+    }
+  }
+
   toggleShare(event: Event) {
     event.preventDefault();
     event.stopPropagation();

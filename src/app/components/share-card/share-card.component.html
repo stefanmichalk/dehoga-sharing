@@ -9,6 +9,20 @@
     <!-- Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/60"></div>
     
+    <!-- Play Button Overlay for Videos -->
+    <div *ngIf="card.hasVideoContent" 
+         class="absolute inset-0 flex items-center justify-center">
+      <div (click)="playVideo($event)"
+           class="w-24 h-24 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center cursor-pointer hover:bg-white/40 hover:scale-110 transition-all duration-300 shadow-xl border border-white/30">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="h-12 w-12 text-white drop-shadow-lg" 
+             viewBox="0 0 24 24" 
+             fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+    </div>
+    
     <!-- Title on image -->
     <h2 class="absolute bottom-0 left-0 right-0 p-6 text-xl font-semibold text-white">
       {{ card.title }}
@@ -18,7 +32,35 @@
   <!-- Content Container -->
   <div class="p-6">
     <!-- Description -->
-    <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-6">{{ card.description }}</p>
+    <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4">{{ card.description }}</p>
+    
+    <!-- Tags -->
+    <div *ngIf="card.tags?.length" class="mb-6">
+      <!-- Copy All Tags Button -->
+      <button (click)="copyAllTags()"
+              class="mb-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-accent/10 text-accent hover:bg-accent/20 transition-colors cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="h-4 w-4" 
+             fill="none" 
+             viewBox="0 0 24 24" 
+             stroke="currentColor">
+          <path stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+        </svg>
+        Alle Hashtags kopieren
+      </button>
+      
+      <!-- Individual Tags -->
+      <div class="flex flex-wrap gap-2">
+        <span *ngFor="let tag of card.tags" 
+              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 cursor-pointer select-all"
+              (click)="copyTag(tag)">
+          #{{ tag }}
+        </span>
+      </div>
+    </div>
     
     <!-- Footer -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

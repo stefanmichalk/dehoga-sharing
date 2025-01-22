@@ -15,6 +15,7 @@ export interface MediaCard {
   hasVideoContent?: boolean;
   videoPlayUrl?: string;
   videoDownloadUrl?: string;
+  tags?: string[];
 }
 
 export interface MediaCardResponse {

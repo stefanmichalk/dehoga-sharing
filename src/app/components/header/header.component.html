@@ -26,37 +26,16 @@
 
       <!-- Navigation -->
       <nav class="hidden md:flex items-center gap-1">
-
-         <!-- Downloads Link -->
-         <a routerLink="/social-media"
-         [ngClass]="{
-           'border-b-2 border-accent text-white': isActive('/social-media'),
-           'text-white/90 hover:text-white': !isActive('/social-media')
-         }"
-         class="px-3.5 py-1 text-[16px] font-medium">
-        Social Media
-      </a>
-
         <ng-container *ngFor="let item of menuItems">
-          <a [routerLink]="['/page', item.id]"
+          <a [routerLink]="item.id === 'social-media' || item.id === 'downloads' ? '/' + item.id : ['/page', item.id]"
              [ngClass]="{
-               'bg-none text-white border-0 border-b-4 border-accent': isActive('/page/' + item.id),
-               'text-white/90': !isActive('/page/' + item.id)
+               'bg-none text-white border-0 border-b-4 border-accent': isActive(item.id === 'social-media' || item.id === 'downloads' ? '/' + item.id : '/page/' + item.id),
+               'text-white/90': !isActive(item.id === 'social-media' || item.id === 'downloads' ? '/' + item.id : '/page/' + item.id)
              }"
              class="px-3.5 py-1 text-[16px] font-medium rounded-0">
             {{ item.title }}
           </a>
         </ng-container>
-        
-        <!-- Downloads Link -->
-        <a routerLink="/downloads"
-           [ngClass]="{
-             'border-b-4 border-accent text-white': isActive('/downloads'),
-             'text-white/90 hover:text-white': !isActive('/downloads')
-           }"
-           class="px-3.5 py-1 text-[16px] font-medium">
-          Downloads
-        </a>
       </nav>
 
       <!-- Mobile Menu Button -->
@@ -99,41 +78,19 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu md:hidden"
        [class.open]="mobileMenuOpen">
-    <div class="bg-primary">
-      <div class="px-8 sm:px-12 py-4 space-y-2">
+    <div class="relative bg-primary shadow-lg">
+      <nav class="px-4 pt-4 pb-6 space-y-2">
         <ng-container *ngFor="let item of menuItems">
-          <a [routerLink]="['/page', item.id]"
-             (click)="toggleMobileMenu()"
+          <a [routerLink]="item.id === 'social-media' || item.id === 'downloads' ? '/' + item.id : ['/page', item.id]"
              [ngClass]="{
-               'border-b-2 border-accent text-white': isActive('/page/' + item.id),
-               'text-white/90 hover:text-white': !isActive('/page/' + item.id)
+               'bg-none text-white border-0 border-b-4 border-accent': isActive(item.id === 'social-media' || item.id === 'downloads' ? '/' + item.id : '/page/' + item.id),
+               'text-white/90': !isActive(item.id === 'social-media' || item.id === 'downloads' ? '/' + item.id : '/page/' + item.id)
              }"
-             class="block px-3.5 py-1 text-[16px] font-medium">
+             class="block px-3.5 py-1 text-[16px] font-medium rounded-0">
             {{ item.title }}
           </a>
         </ng-container>
-
-        <a routerLink="/social-media"
-        (click)="toggleMobileMenu()"
-        [ngClass]="{
-          'border-b-2 border-accent text-white': isActive('/social-media'),
-          'text-white/90 hover:text-white': !isActive('/social-media')
-        }"
-        class="block px-3.5 py-1 text-[16px] font-medium">
-       Social Media
-     </a>
-        
-        <!-- Downloads Link Mobile -->
-        <a routerLink="/downloads"
-           (click)="toggleMobileMenu()"
-           [ngClass]="{
-             'border-b-2 border-accent text-white': isActive('/downloads'),
-             'text-white/90 hover:text-white': !isActive('/downloads')
-           }"
-           class="block px-3.5 py-1 text-[16px] font-medium">
-          Downloads
-        </a>
-      </div>
+      </nav>
     </div>
   </div>
 </header>

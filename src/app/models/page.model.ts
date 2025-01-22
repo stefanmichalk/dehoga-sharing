@@ -4,4 +4,5 @@ export interface Page {
   content: string;
   banner: string | null;
   footer: boolean;
+  sort: number;
 }

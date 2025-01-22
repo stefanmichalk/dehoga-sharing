@@ -4,6 +4,25 @@ import { RouterModule, Router } from '@angular/router';
 import { PagesService } from '../../services/pages.service';
 import { Page } from '../../models/page.model';
 
+const staticMenuItems: Page[] = [
+  {
+    id: 'social-media',
+    title: 'Social Media',
+    content: '',
+    banner: null,
+    footer: false,
+    sort: 2
+  },
+  {
+    id: 'downloads',
+    title: 'Downloads',
+    content: '',
+    banner: null,
+    footer: false,
+    sort: 3
+  }
+];
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -22,7 +41,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.pagesService.getPages().subscribe(pages => {
-      this.menuItems = pages.filter(page => !page.footer);
+      const dynamicMenuItems = pages.filter(page => !page.footer);
+      this.menuItems = [...staticMenuItems, ...dynamicMenuItems]
+        .sort((a, b) => a.sort - b.sort);
     });
   }
 
