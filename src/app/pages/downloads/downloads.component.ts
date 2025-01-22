@@ -113,22 +113,16 @@ export class DownloadsComponent implements OnInit {
   }
 
   getPreviewUrl(download: Download): string {
-    if (['card', 'poster', 'postcard'].includes(download.type) || !download.preview) {
-      return this.downloadsService.getFileUrl(download.file, {
-        isPreview: true,
-        type: download.type
-      }) || '';
+    console.log('Getting preview URL for download:', download);
+    // Wenn ein Preview-Bild vorhanden ist, dieses verwenden
+    if (download.preview) {
+      console.log('Using preview image:', download.preview);
+      return this.downloadsService.getPreviewUrl(download.preview);
     }
-
-    return this.downloadsService.getFileUrl(download.preview) || '';
-  }
-
-  getFileUrl(fileId: string | null): string {
-    return this.downloadsService.getFileUrl(fileId) || '';
-  }
-
-  getTagsForDownload(download: Download): string[] {
-    return download.tags && Array.isArray(download.tags) ? download.tags : [];
+    
+    console.log('No preview image found, using placeholder');
+    // Fallback: Standardbild oder leeres Bild
+    return 'assets/images/placeholder.png'; // oder was auch immer als Fallback dienen soll
   }
 
   async downloadFile(download: Download): Promise<void> {
@@ -136,6 +130,12 @@ export class DownloadsComponent implements OnInit {
       await this.downloadsService.downloadFile(download);
     } catch (error) {
       console.error('Error downloading file:', error);
+      // Optional: Fehlermeldung für den Benutzer anzeigen
+      this.error = 'Fehler beim Herunterladen der Datei. Bitte versuchen Sie es später erneut.';
     }
+  }
+
+  getTagsForDownload(download: Download): string[] {
+    return download.tags && Array.isArray(download.tags) ? download.tags : [];
   }
 }

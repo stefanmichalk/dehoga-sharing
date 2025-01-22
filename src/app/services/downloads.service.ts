@@ -43,28 +43,31 @@ export class DownloadsService {
     return download.tags || [];
   }
 
-  getFileUrl(fileId: string | null, options?: { width?: number, isPreview?: boolean, type?: string }): string {
-    if (!fileId) {
-      console.warn('No fileId provided to getFileUrl');
+  getPreviewUrl(previewId: string | null): string {
+    if (!previewId) {
+      console.warn('No previewId provided to getPreviewUrl');
       return '';
     }
 
-    // Entferne mögliche Anführungszeichen
-    const cleanFileId = fileId.replace(/"/g, '');
+    console.log('Generating preview URL for ID:', previewId);
+    const cleanPreviewId = previewId.replace(/"/g, '');
+    const url = `${this.assetUrl}/${cleanPreviewId}?width=400&format=webp&quality=60`;
+    console.log('Generated preview URL:', url);
+    return url;
+  }
 
-    const baseUrl = `${this.assetUrl}/${cleanFileId}`;
-    let finalUrl = baseUrl;
-
-    // Wenn es ein Bild-Type ist und eine Preview angefordert wird, füge die Breite hinzu
-    if (options?.isPreview && ['card', 'poster', 'postcard'].includes(options.type || '')) {
-      finalUrl = `${baseUrl}?width=400&format=webp&quality=60`;
+  getDownloadUrl(fileId: string | null): string {
+    if (!fileId) {
+      console.warn('No fileId provided to getDownloadUrl');
+      return '';
     }
 
-    return finalUrl;
+    const cleanFileId = fileId.replace(/"/g, '');
+    return `${this.assetUrl}/${cleanFileId}/download`;
   }
 
   async downloadFile(download: Download): Promise<void> {
-    const fileUrl = this.getFileUrl(download.file);
+    const fileUrl = this.getDownloadUrl(download.file);
     if (!fileUrl) return;
 
     try {
@@ -72,15 +75,28 @@ export class DownloadsService {
       const response = await fetch(fileUrl);
       const blob = await response.blob();
 
+      // Original-Dateiname aus dem Content-Disposition Header extrahieren, falls vorhanden
+      let filename = download.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+      
+      const contentDisposition = response.headers.get('content-disposition');
+      if (contentDisposition) {
+        const filenameMatch = contentDisposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/);
+        if (filenameMatch && filenameMatch[1]) {
+          // Anführungszeichen entfernen, falls vorhanden
+          const originalFilename = filenameMatch[1].replace(/['"]/g, '');
+          // Extension vom Original-Dateinamen extrahieren
+          const extensionMatch = originalFilename.match(/\.[^.]*$/);
+          if (extensionMatch) {
+            filename += extensionMatch[0];
+          }
+        }
+      }
+
       // Download-Link erstellen
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = downloadUrl;
-
-      // Dateiname aus dem Original-Namen oder fallback
-      const filename = download.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
-      const extension = this.getFileExtension(download.type);
-      link.download = `${filename}${extension}`;
+      link.download = filename;
 
       // Download auslösen
       document.body.appendChild(link);
@@ -92,21 +108,6 @@ export class DownloadsService {
     } catch (error) {
       console.error('Error downloading file:', error);
       throw error;
-    }
-  }
-
-  private getFileExtension(type: string): string {
-    switch (type) {
-      case 'card':
-      case 'poster':
-      case 'postcard':
-        return '.jpg';
-      case 'file':
-        return '.pdf';
-      case 'video':
-        return '.mp4';
-      default:
-        return '';
     }
   }
 }
