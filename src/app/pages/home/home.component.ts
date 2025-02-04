@@ -22,8 +22,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadBlocks();
-    // Initial scroll position
-    this.scrollY = window.scrollY;
+    // Safely access window during client-side execution
+    if (typeof window !== 'undefined') {
+      this.scrollY = window.scrollY;
+    }
   }
 
   ngOnDestroy() {
@@ -33,8 +35,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   @HostListener('window:scroll')
   onScroll() {
-    this.scrollY = window.scrollY;
-    this.requestTick();
+    if (typeof window !== 'undefined') {
+      this.scrollY = window.scrollY;
+      this.requestTick();
+    }
   }
 
   private requestTick() {
@@ -48,8 +52,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private updateParallax() {
-    // Parallax effect: Move background at half the scroll speed
-    this.parallaxOffset = this.scrollY * 0.5;
+    if (typeof window !== 'undefined') {
+      // Parallax effect: Move background at half the scroll speed
+      this.parallaxOffset = this.scrollY * 0.5;
+    }
   }
 
   private loadBlocks() {
