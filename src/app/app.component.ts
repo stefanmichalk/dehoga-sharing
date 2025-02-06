@@ -45,15 +45,15 @@ export class AppComponent implements OnInit {
       
       // Reset meta tags when navigating to home page
       if (event.url === '/') {
-        this.title.setTitle('damit Alle gewinnen');
-        this.meta.updateTag({ name: 'description', content: 'damit Alle gewinnen' });
-        this.meta.updateTag({ property: 'og:title', content: 'damit Alle gewinnen' });
-        this.meta.updateTag({ property: 'og:description', content: 'Zeit für echte Lösungen - damit Alle gewinnen' });
+        this.title.setTitle('damit ALLE gewinnen');
+        this.meta.updateTag({ name: 'description', content: 'damit ALLE gewinnen' });
+        this.meta.updateTag({ property: 'og:title', content: 'damit ALLE gewinnen' });
+        this.meta.updateTag({ property: 'og:description', content: 'Zeit für echte Lösungen - damit ALLE gewinnen' });
         this.meta.updateTag({ property: 'og:image', content: 'https://dehoga.four-lines.de/main.jpg' });
 
         // twitter
-        this.meta.updateTag({ name: 'twitter:title', content: 'damit Alle gewinnen' });
-        this.meta.updateTag({ name: 'twitter:description', content: 'Zeit für echte Lösungen - damit Alle gewinnen' });
+        this.meta.updateTag({ name: 'twitter:title', content: 'damit ALLE gewinnen' });
+        this.meta.updateTag({ name: 'twitter:description', content: 'Zeit für echte Lösungen - damit ALLE gewinnen' });
         this.meta.updateTag({ name: 'twitter:image', content: 'https://dehoga.four-lines.de/main.jpg' });
       }
     });

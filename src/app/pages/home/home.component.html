@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<div class="mb-2 sm:mb-12 relative h-[60vh] min-h-[400px] overflow-hidden">
+<div class="hidden mb-2 sm:mb-12 relative h-[60vh] min-h-[400px] overflow-hidden">
   <!-- Parallax Background -->
   <div class="absolute inset-0 z-0">
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
@@ -13,12 +13,18 @@
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 h-full flex flex-col items-center justify-center text-white px-4">
+  <div class="hidden relative z-10 h-full flex flex-col items-center justify-center text-white px-4">
     <img src="assets/images/damit-alle-gewinnen.png" alt="Hero Image">
   </div>
 </div>
 
+
 <!-- Main Content -->
 <div class="home-container">
+
+  <div class="mt-16 md:mt-24 text-accent text-3xl md:text-5xl font-bold mb-6 md:mb-8"> Jetzt handeln: Zeit für echte Lösungen! </div>
+  <h2 class="mb-6 md:mb-2 text-lg md:text-3xl text-primary font-bold">Die Gastronomie ist weit mehr als nur eine Branche – sie ist das Herz unserer Gesellschaft. Restaurants, Wirtshäuser, Cafés, Bars und Clubs sowie Hotels und Gasthöfe sind Orte des Genusses, der Begegnung und der Gemeinschaft.</h2>
+  <app-testimonial></app-testimonial>
+
   <app-blocks-container [blocks]="blocks" [relatedPage]="'home'"></app-blocks-container>
 </div>

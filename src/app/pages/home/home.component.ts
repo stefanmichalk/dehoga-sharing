@@ -2,13 +2,16 @@ import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlocksComponent } from '../../components/blocks/blocks.component';
 import { BlocksContainerComponent } from '../../components/blocks/blocks-container.component';
+import { TestimonialComponent } from '../../components/testimonial/testimonial.component';
+import { TestimonialWrapperComponent } from '../../components/testimonial-wrapper/testimonial-wrapper.component';
+
 import { Block } from '../../models/block.interface';
 import { BlockService } from '../../services/block.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, BlocksComponent, BlocksContainerComponent],
+  imports: [CommonModule, BlocksComponent, BlocksContainerComponent, TestimonialComponent, TestimonialWrapperComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
