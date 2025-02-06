@@ -35,7 +35,13 @@ export class TestimonialComponent implements OnInit, AfterViewInit {
     this.testimonialService.getTestimonials().subscribe({
       next: (response) => {
         if (response && Array.isArray(response.data) && response.data.length > 0) {
-          this.allTestimonials = response.data;
+          const data = response.data;
+          // shuffle data
+          for (let i = data.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [data[i], data[j]] = [data[j], data[i]];
+          }
+          this.allTestimonials = data;
         } else {
           this.error = 'Kein Testimonial verfügbar';
         }
