@@ -29,7 +29,7 @@ export class DownloadsComponent implements OnInit {
       { type: 'card', label: 'Social Media Kacheln' },
       { type: 'poster', label: 'Poster' },
       { type: 'postcard', label: 'Postkarten' },
-      { type: 'file', label: 'Dokumente' },
+      { type: 'file', label: 'Flyer' },
       { type: 'video', label: 'Videos' },
     ];
   }
