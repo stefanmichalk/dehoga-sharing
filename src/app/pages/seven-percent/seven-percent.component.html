@@ -1,0 +1,262 @@
+<!-- Hero Section -->
+<div class="relative mb-16 overflow-hidden">
+  <!-- Background Image -->
+  <div class="w-full">
+    <img 
+      src="assets/images/7-percent/7-prozent-entscheiden.png" 
+      alt="7% entscheiden Header" 
+      class="w-full h-auto object-contain"
+      onError="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <!-- Fallback gradient background -->
+    <div class="w-full min-h-[50vh] bg-gradient-to-br from-primary to-accent flex items-center justify-center" style="display: none;">
+      <div class="text-center text-white">
+        <div class="text-8xl md:text-9xl font-black mb-4">7%</div>
+        <h1 class="text-4xl md:text-5xl font-bold">entscheiden</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subline as overlay on desktop -->
+  <div class="hidden md:block absolute bottom-0 right-0 left-8">
+    <div class="bg-black/60 backdrop-blur-sm rounded-l-2xl px-6 py-4 max-w-4xl ml-auto">
+      <p class="text-white text-lg md:text-xl leading-relaxed font-medium tracking-wide">
+        Restaurants, Cafés, Wirtshäuser und Caterer sind unsere öffentlichen Wohnzimmer. 
+        Damit sie bleiben, braucht es faire Rahmenbedingungen.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Subtext under hero image -->
+<div class="md:hidden container mx-auto px-4 py-6">
+  <p class="text-gray-700 text-lg leading-relaxed font-medium tracking-wide text-center">
+    Restaurants, Cafés, Wirtshäuser und Caterer sind unsere öffentlichen Wohnzimmer. 
+    Damit sie bleiben, braucht es faire Rahmenbedingungen.
+  </p>
+</div>
+
+<!-- Main Content Section -->
+<div class="container mx-auto px-4 py-16">
+  <!-- Section Title -->
+  <div class="text-center mb-16">
+    <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Warum 7% entscheiden</h2>
+    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+      Von fairen Steuern profitieren alle – Gäste, Betriebe und die gesamte regionale Wirtschaft.
+    </p>
+  </div>
+
+  <!-- Kachel Grid -->
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+    
+    <!-- Kachel 1: Jobmotor -->
+    <div class="bg-white rounded-b-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+      <div class="relative">
+        <img 
+          src="assets/images/7-percent/kachel-jobmotor.png" 
+          alt="Jobmotor" 
+          class="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+          (click)="downloadImage('assets/images/7-percent/kachel-jobmotor.png', 'kachel-jobmotor.png')"
+          onError="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="w-full h-48 bg-gradient-to-br from-primary to-primary-light flex items-center justify-center" style="display: none;">
+          <div class="text-center text-white">
+            <div class="text-4xl font-bold mb-2">💼</div>
+            <h3 class="text-xl font-bold">Jobmotor</h3>
+          </div>
+        </div>
+        <!-- Download Icon -->
+        <div class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-primary mb-3">Jobmotor, Integrationskraft, Standortfaktor</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Das Gastgewerbe schafft Millionen Arbeitsplätze, ermöglicht Integration und macht Städte und Regionen lebenswert.
+        </p>
+      </div>
+    </div>
+
+    <!-- Kachel 2: 99% kleine Betriebe -->
+    <div class="bg-white rounded-b-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+      <div class="relative">
+        <img 
+          src="assets/images/7-percent/kachel-99-prozent.png" 
+          alt="99% kleine Betriebe" 
+          class="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+          (click)="downloadImage('assets/images/7-percent/kachel-99-prozent.png', 'kachel-99-prozent.png')"
+          onError="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="w-full h-48 bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center" style="display: none;">
+          <div class="text-center text-white">
+            <div class="text-4xl font-bold mb-2">🏪</div>
+            <h3 class="text-xl font-bold">99%</h3>
+          </div>
+        </div>
+        <!-- Download Icon -->
+        <div class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-primary mb-3">99% kleine & mittlere Betriebe</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Unsere Gastgeber sind zu 99% kleine und mittlere Betriebe – Familienunternehmen, die faire Rahmenbedingungen brauchen.
+        </p>
+      </div>
+    </div>
+
+    <!-- Kachel 3: Für alle -->
+    <div class="bg-white rounded-b-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+      <div class="relative">
+        <img 
+          src="assets/images/7-percent/kachel-fuer-alle.png" 
+          alt="Für alle" 
+          class="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+          (click)="downloadImage('assets/images/7-percent/kachel-fuer-alle.png', 'kachel-fuer-alle.png')"
+          onError="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="w-full h-48 bg-gradient-to-br from-primary-light to-accent flex items-center justify-center" style="display: none;">
+          <div class="text-center text-white">
+            <div class="text-4xl font-bold mb-2">🤝</div>
+            <h3 class="text-xl font-bold">Für alle</h3>
+          </div>
+        </div>
+        <!-- Download Icon -->
+        <div class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-primary mb-3">Für Gäste, Betriebe, Beschäftigte</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Von 7% profitieren alle.
+        </p>
+      </div>
+    </div>
+
+    <!-- Kachel 4: Regionale Wirtschaft -->
+    <div class="bg-white rounded-b-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+      <div class="relative">
+        <img 
+          src="assets/images/7-percent/kachel-regional.png" 
+          alt="Regionale Wirtschaft" 
+          class="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+          (click)="downloadImage('assets/images/7-percent/kachel-regional.png', 'kachel-regional.png')"
+          onError="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="w-full h-48 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center" style="display: none;">
+          <div class="text-center text-white">
+            <div class="text-4xl font-bold mb-2">🌱</div>
+            <h3 class="text-xl font-bold">Regional</h3>
+          </div>
+        </div>
+        <!-- Download Icon -->
+        <div class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-primary mb-3">Regionale Wirtschaft stärken</h3>
+        <p class="text-gray-600 leading-relaxed">
+          7% halten regionale Kreisläufe am Laufen – vom Landwirt bis zur Gastronomie. Das stärkt Regionen und Vielfalt.
+        </p>
+      </div>
+    </div>
+
+    <!-- Kachel 5: Entlastung -->
+    <div class="bg-white rounded-b-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+      <div class="relative">
+        <img 
+          src="assets/images/7-percent/kachel-entlastung.png" 
+          alt="Entlastung" 
+          class="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+          (click)="downloadImage('assets/images/7-percent/kachel-entlastung.png', 'kachel-entlastung.png')"
+          onError="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="w-full h-48 bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center" style="display: none;">
+          <div class="text-center text-white">
+            <div class="text-4xl font-bold mb-2">🍽️</div>
+            <h3 class="text-xl font-bold">Entlastung</h3>
+          </div>
+        </div>
+        <!-- Download Icon -->
+        <div class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-primary mb-3">Entlastung für alle</h3>
+        <p class="text-gray-600 leading-relaxed">
+          7% entlasten alle, die täglich Millionen Mahlzeiten ermöglichen – von der Kita bis zum Seniorenheim.
+        </p>
+      </div>
+    </div>
+
+    <!-- Kachel 6: Faire Steuern -->
+    <div class="bg-white rounded-b-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+      <div class="relative">
+        <img 
+          src="assets/images/7-percent/kachel-faire-steuern.png" 
+          alt="Faire Steuern" 
+          class="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+          (click)="downloadImage('assets/images/7-percent/kachel-faire-steuern.png', 'kachel-faire-steuern.png')"
+          onError="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center" style="display: none;">
+          <div class="text-center text-white">
+            <div class="text-4xl font-bold mb-2">⚖️</div>
+            <h3 class="text-xl font-bold">Fair</h3>
+          </div>
+        </div>
+        <!-- Download Icon -->
+        <div class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-primary mb-3">Faire & einheitliche Steuern</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Fertiggericht im Supermarkt 7% – frisch gekochtes Essen im Restaurant 19%? Das ist unfair. 
+          <span class="font-semibold">👉 7% auf alles – für echte Steuergerechtigkeit.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zentrale Forderung / Highlight-Block -->
+  <div class="bg-gradient-to-r from-primary to-accent rounded-3xl p-8 md:p-12 text-white text-center mb-16">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-6xl md:text-7xl font-black mb-6">7%</div>
+      <blockquote class="text-2xl md:text-3xl font-bold leading-relaxed mb-6">
+        „7% sind fair & gerecht – und entscheiden über die Zukunft unserer Gastronomie."
+      </blockquote>
+      <button class="bg-white text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors">
+        Mehr erfahren
+      </button>
+    </div>
+  </div>
+
+  <!-- DEHOGA Statement -->
+  <div class="p-8 md:p-12">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+        Als DEHOGA kämpfen wir dafür, dass in der Gastronomie überall einheitlich 7% statt 19% Mehrwertsteuer auf Speisen gelten.
+      </p>
+      <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+        Die Kampagne „7% entscheiden" zeigt, um wen es wirklich geht: Gäste, Familienbetriebe, Mitarbeiter und regionale Wirtschaftskreisläufe.
+      </p>
+      <div class="pt-4">
+        <p class="text-2xl md:text-3xl font-bold text-accent">
+          👉 7% auf alles – das ist fair & gerecht.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

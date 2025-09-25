@@ -6,6 +6,10 @@ import { StaticComponent } from './pages/static/static.component';
 export const routes: Routes = [
   { 
     path: '', 
+    loadComponent: () => import('./pages/seven-percent/seven-percent.component').then(m => m.SevenPercentComponent)
+  },
+  { 
+    path: 'home', 
     component: HomeComponent 
   },
   { 
@@ -23,6 +27,10 @@ export const routes: Routes = [
   {
     path: 'social-media',
     loadComponent: () => import('./pages/social-media/social-media.component').then(m => m.SocialMediaComponent)
+  },
+  {
+    path: '7-prozent-entscheiden',
+    loadComponent: () => import('./pages/seven-percent/seven-percent.component').then(m => m.SevenPercentComponent)
   },
   {
     path: '**',
