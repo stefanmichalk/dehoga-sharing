@@ -1,0 +1,116 @@
+<!-- Cookie Consent Banner -->
+<div *ngIf="showBanner" 
+     class="fixed bottom-0 left-0 right-0 z-50 bg-gray-800 text-white shadow-2xl border-t border-gray-700 transition-transform transform translate-y-0">
+  
+  <!-- Simple Banner -->
+  <div *ngIf="!showDetails" class="px-4 py-6 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <!-- Cookie Icon & Text -->
+        <div class="flex items-start gap-3 flex-1">
+          <div class="flex-shrink-0">
+            <svg class="w-6 h-6 text-orange-500 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">Cookie-Einstellungen</h3>
+            <p class="text-gray-300 text-sm leading-relaxed max-w-2xl">
+              Wir verwenden Cookies und ähnliche Technologien, um die beste Benutzererfahrung zu gewährleisten. 
+              Notwendige Cookies sind für die Grundfunktionen der Website erforderlich. 
+              Weitere Cookies helfen uns, die Website zu verbessern und Ihnen personalisierte Inhalte zu zeigen.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3 min-w-0 sm:min-w-max">
+          <button (click)="toggleDetails()" 
+                  class="px-4 py-2 text-sm bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors border border-gray-600">
+            Einstellungen
+          </button>
+          <button (click)="acceptNecessary()" 
+                  class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors">
+            Nur Notwendige
+          </button>
+          <button (click)="acceptAll()" 
+                  class="px-4 py-2 text-sm bg-orange-600 hover:bg-orange-500 text-white rounded-lg transition-colors font-semibold">
+            Alle Akzeptieren
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Settings -->
+  <div *ngIf="showDetails" class="px-4 py-6 sm:px-6 border-t border-gray-700">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-semibold text-white">Cookie-Einstellungen anpassen</h3>
+        <button (click)="toggleDetails()" 
+                class="text-gray-400 hover:text-white transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Cookie Categories -->
+      <div class="space-y-6 mb-6">
+        <!-- Necessary Cookies -->
+        <div class="bg-gray-700 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-lg font-medium text-white">Notwendige Cookies</h4>
+            <span class="text-sm text-gray-300 bg-gray-600 px-2 py-1 rounded">Immer aktiv</span>
+          </div>
+          <p class="text-gray-300 text-sm">
+            Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.
+            Sie werden normalerweise nur als Reaktion auf Aktionen gesetzt, die einer Serviceanfrage entsprechen.
+          </p>
+        </div>
+
+        <!-- Analytics Cookies -->
+        <div class="bg-gray-700 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-lg font-medium text-white">Analyse-Cookies</h4>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="analytics" class="sr-only peer">
+              <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-600"></div>
+            </label>
+          </div>
+          <p class="text-gray-300 text-sm">
+            Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, indem sie 
+            Informationen anonym sammeln und melden. Wir verwenden diese Daten zur Verbesserung unserer Website.
+          </p>
+        </div>
+
+        <!-- Marketing Cookies -->
+        <div class="bg-gray-700 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-lg font-medium text-white">Marketing-Cookies</h4>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="marketing" class="sr-only peer">
+              <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-600"></div>
+            </label>
+          </div>
+          <p class="text-gray-300 text-sm">
+            Diese Cookies werden verwendet, um Ihnen relevante Werbung zu zeigen. Sie können auch verwendet werden, 
+            um die Anzahl der Werbeanzeigen zu begrenzen und die Effektivität von Werbekampagnen zu messen.
+          </p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-3 justify-end">
+        <button (click)="acceptNecessary()" 
+                class="px-6 py-2 text-sm bg-gray-600 hover:bg-gray-500 text-white rounded-lg transition-colors">
+          Nur Notwendige
+        </button>
+        <button (click)="savePreferences()" 
+                class="px-6 py-2 text-sm bg-orange-600 hover:bg-orange-500 text-white rounded-lg transition-colors font-semibold">
+          Einstellungen Speichern
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PagesService } from '../../services/pages.service';
 import { Page } from '../../models/page.model';
+import { CookieSettingsComponent } from '../cookie-settings/cookie-settings.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, CookieSettingsComponent],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })

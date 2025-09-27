@@ -6,11 +6,14 @@ import { filter } from 'rxjs';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { CookieConsentBannerComponent } from './components/cookie-consent-banner/cookie-consent-banner.component';
+import { GoogleTagManagerService } from './services/google-tag-manager.service';
+import { CookieConsentService } from './services/cookie-consent.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent, ToastComponent],
+  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent, ToastComponent, CookieConsentBannerComponent],
   template: `
     <app-header></app-header>
     <main class="min-h-screen bg-gray-50">
@@ -20,6 +23,7 @@ import { ToastComponent } from './components/toast/toast.component';
     </main>
     <app-footer></app-footer>
     <app-toast></app-toast>
+    <app-cookie-consent-banner></app-cookie-consent-banner>
   `,
   styleUrls: ['./app.component.scss']
 })
@@ -30,7 +34,9 @@ export class AppComponent implements OnInit {
     private router: Router,
     private meta: Meta,
     private title: Title,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private gtmService: GoogleTagManagerService,
+    private cookieConsentService: CookieConsentService
   ) {}
 
   ngOnInit() {
